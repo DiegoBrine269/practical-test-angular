@@ -1,0 +1,34 @@
+<div class="flex items-center gap-4 mb-4">
+  @if (videoService.channel(); as ch) {
+    <img
+      [src]="ch.snippet.thumbnails.high.url"
+      alt="Channel photo"
+      class="w-20 h-20 rounded-full object-cover flex-shrink-0"
+    />
+    <div>
+      <h2 class="text-lg font-medium">{{ ch.snippet.title }}</h2>
+      <p class="text-sm text-gray-500">Channel</p>
+    </div>
+  }
+</div>
+
+<div>
+    <h3 class="font-bold">Videos</h3>
+
+    @if (videoService.isLoading()) {
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            @for (skeleton of skeletonArray; track $index) {
+                <div class="animate-pulse">
+                    <div class="bg-gray-200 rounded-lg aspect-video w-full"></div>
+                    <div class="bg-gray-200 h-4 rounded mt-2 w-3/4"></div>
+                </div>
+            }
+        </div>
+    } @else {
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
+            @for (video of videoService.channelVideos(); track $index) {
+                <app-video-preview [videoInfo]="video" />
+            }
+        </div>
+    }
+</div>

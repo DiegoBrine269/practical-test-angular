@@ -1,0 +1,38 @@
+<!-- Video Player -->
+<div class="w-full aspect-video">
+  <iframe
+    [src]="embedUrl()"
+    class="w-full h-full rounded-lg"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+
+<!-- Video Info -->
+<div>
+    @if (video(); as v) {
+        <h2 class="text-xl font-bold mt-4" innerHtml="{{ v.snippet.title }}"></h2>
+        <p class="text-sm text-gray-600">{{ v.snippet.publishedAt | date }}</p>
+        <p class="mt-2">{{ v.snippet.description }}</p>
+    }
+
+</div> 
+
+<div class="mt-6">
+    <h3 class="font-bold mb-3">Comments</h3>
+    <div class="flex flex-col gap-3 pl-4">
+        @for (comment of videoService.comments(); track $index) {
+            <div class="flex  gap-2">
+                <img
+                    [src]="comment.snippet?.topLevelComment?.snippet?.authorProfileImageUrl"
+                    alt="Foto de perfil"
+                    class="w-10 h-10 rounded-full"
+                />
+                <div>
+                    <p class="text-xs font-bold">{{comment.snippet?.topLevelComment?.snippet?.authorDisplayName}}</p>
+                    <p class="text-xs text-justify text-wrap wrap-break-word" innerHTML="{{ comment.snippet?.topLevelComment?.snippet?.textDisplay }}"></p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

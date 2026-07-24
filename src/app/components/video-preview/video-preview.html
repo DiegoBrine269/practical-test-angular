@@ -1,0 +1,6 @@
+<div class="cursor-pointer" (click)="onSelect()">
+    <div class="relative w-full  rounded overflow-hidden">
+        <img [ngSrc]="thumbnailUrl()" alt="Imagen de video" width="480" height="360" class="w-auto h-auto aspect-video object-cover rounded-lg" />
+    </div>
+    <p class="text-sm text-wrap wrap-break-word" [innerHTML]="title()"></p>
+</div>
