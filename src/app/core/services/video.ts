@@ -2,7 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:3333/api/v1';
+const API_URL = 'https://practical-test-orbis.neongonz.com/api/v1';
 
 export interface VideoInfo {
   id: {
