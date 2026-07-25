@@ -5,7 +5,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ## Prerequisites
 
 - Node.js 22+
-- The backend API running (see [backend repo](link)) or a deployed instance
+- The backend API running (see [backend repo](https://github.com/DiegoBrine269/practical-test-adonis/tree/main)) or a deployed instance
 
 ## Development server
 
